@@ -103,6 +103,15 @@
             hold-trigger-key-positions = <45>;
             tapping-term-ms = <2000>;
         };
+
+        vol_behavior: vol_behavior {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "VOL_BEHAVIOR";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp C_VOL_UP>, <&kp C_VOLUME_DOWN>;
+
+            tap-ms = <7>;
+        };
     };
 
     keymap {
@@ -126,7 +135,7 @@
                               &kp LCTRL  &kp LEFT_ALT  &kp LEFT_GUI  &mo 1   &kp SPACE     &mo 1     &kp BACKSPACE  &none   &none      &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&vol_behavior>, <&inc_dec_kp PG_UP PG_DN>;
         };
 
         navigation {
