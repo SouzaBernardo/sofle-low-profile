@@ -19,7 +19,7 @@
         compatible = "zmk,conditional-layers";
 
         adjust_layer {
-            if-layers = <2 3>;
+            if-layers = <3 1>;
             then-layer = <4>;
         };
     };
@@ -128,17 +128,34 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp NON_US_BACKSLASH  &kp N1  &kp N2     &kp N3        &kp N4        &kp N5                          &kp N6         &kp N7     &kp N8     &kp N9            &kp N0    &kp EQUAL
-&kp TAB               &kp Q   &kp W      &kp E         &kp R         &kp T                           &kp Y          &kp U      &kp I      &kp O             &kp P     &kp BACKSLASH
-&kp ESC               &kp A   &kp S      &kp D         &kp F         &kp G                           &kp H          &kp J      &kp K      &kp L             &kp SEMI  &kp SQT
-&kp LSHFT             &kp Z   &kp X      &kp C         &kp V         &kp B   &kp C_MUTE    &kp C_PP  &kp N          &kp M      &kp COMMA  &kp DOT           &kp FSLH  &kp ENTER
-                              &kp LCTRL  &kp LEFT_ALT  &kp LEFT_GUI  &mo 1   &kp SPACE     &mo 2     &kp BACKSPACE  &refactor  &find      &create_variable
+&kp NON_US_BACKSLASH  &kp N1  &kp N2     &kp N3        &kp N4        &kp N5                           &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &kp EQUAL
+&kp TAB               &kp Q   &kp W      &kp E         &kp R         &kp T                            &kp Y   &kp U   &kp I      &kp O    &kp P     &kp BACKSLASH
+&kp ESC               &kp A   &kp S      &kp D         &kp F         &kp G                            &kp H   &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LSHFT             &kp Z   &kp X      &kp C         &kp V         &kp B   &kp C_MUTE    &kp C_PP   &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp ENTER
+                              &kp LCTRL  &kp LEFT_ALT  &kp LEFT_GUI  &mo 1   &kp SPACE     &kp SPACE  &mo 3   &trans  &trans     &mo 2
             >;
 
-            sensor-bindings = <&vol_behavior>, <&inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp C_VOLUME_UP C_VOL_DN>,
+                <&inc_dec_kp PG_UP PG_DN>;
         };
 
-        layer_2 {
+        navigation_mac {
+            display-name = "lower";
+            bindings = <
+&kp F1  &kp F2     &kp F3     &kp F4        &kp F5        &kp F6                       &kp C_PREV          &kp F8              &kp C_NEXT        &kp F10              &kp F11        &kp F12
+&trans  &trans     &trans     &trans        &trans        &trans                       &kp LA(LEFT)        &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT)        &kp RG(P)      &kp LG(LEFT_BRACKET)
+&trans  &trans     &trans     &trans        &trans        &trans                       &kp LEFT            &kp DOWN            &kp UP_ARROW      &kp RIGHT            &kp BACKSPACE  &kp LG(RIGHT_BRACKET)
+&trans  &kp RG(Z)  &kp RG(X)  &kp RG(C)     &kp RG(V)     &kp RG(B)  &trans    &trans  &kp LG(LEFT_ARROW)  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)  &kp LG(RIGHT_ARROW)  &kp DELETE     &kp ENTER
+                   &kp LCTRL  &kp LEFT_ALT  &kp LEFT_GUI  &trans     &trans    &trans  &trans              &trans              &trans            &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp PG_UP PG_DN>;
+        };
+
+        navigation_windows {
             display-name = "lower";
             bindings = <
 &kp F1  &kp F2     &kp F3     &kp F4        &kp F5        &kp F6                          &kp C_PREV    &kp C_PLAY            &kp C_NEXT             &kp F10        &kp F11        &kp F12
